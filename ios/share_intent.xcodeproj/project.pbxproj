@@ -17,6 +17,7 @@
 		A27258222AA04F14007D371E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27258212AA04F14007D371E /* ShareViewController.swift */; };
 		A27258252AA04F14007D371E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A27258232AA04F14007D371E /* MainInterface.storyboard */; };
 		A27258292AA04F14007D371E /* ShareIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A272581F2AA04F14007D371E /* ShareIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A272582F2AA05642007D371E /* RCTShareModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A272582E2AA05642007D371E /* RCTShareModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,10 @@
 		A27258212AA04F14007D371E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A27258242AA04F14007D371E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		A27258262AA04F14007D371E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A272582E2AA05642007D371E /* RCTShareModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTShareModule.m; sourceTree = "<group>"; };
+		A27258312AA05694007D371E /* RCTShareModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RCTShareModule.h; path = share_intent/RCTShareModule.h; sourceTree = "<group>"; };
+		A27258322AA05EC7007D371E /* ShareIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareIntent.entitlements; sourceTree = "<group>"; };
+		A27258332AA05EDC007D371E /* share_intent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = share_intent.entitlements; path = share_intent/share_intent.entitlements; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -121,12 +126,15 @@
 		13B07FAE1A68108700A75B9A /* share_intent */ = {
 			isa = PBXGroup;
 			children = (
+				A27258332AA05EDC007D371E /* share_intent.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				A272582E2AA05642007D371E /* RCTShareModule.m */,
+				A27258312AA05694007D371E /* RCTShareModule.h */,
 			);
 			name = share_intent;
 			sourceTree = "<group>";
@@ -177,6 +185,7 @@
 		A27258202AA04F14007D371E /* ShareIntent */ = {
 			isa = PBXGroup;
 			children = (
+				A27258322AA05EC7007D371E /* ShareIntent.entitlements */,
 				A27258212AA04F14007D371E /* ShareViewController.swift */,
 				A27258232AA04F14007D371E /* MainInterface.storyboard */,
 				A27258262AA04F14007D371E /* Info.plist */,
@@ -493,6 +502,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				A272582F2AA05642007D371E /* RCTShareModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +546,7 @@
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-share_intent-share_intentTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 47QGMGVGKG;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -552,7 +563,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ww8007.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/share_intent.app/share_intent";
 			};
@@ -564,6 +575,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 47QGMGVGKG;
 				INFOPLIST_FILE = share_intentTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -576,7 +588,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ww8007.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/share_intent.app/share_intent";
 			};
@@ -589,7 +601,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = share_intent/share_intent.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47QGMGVGKG;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = share_intent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -602,7 +616,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ww8007.share;
 				PRODUCT_NAME = share_intent;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -617,7 +631,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = share_intent/share_intent.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47QGMGVGKG;
 				INFOPLIST_FILE = share_intent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -629,7 +645,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ww8007.share;
 				PRODUCT_NAME = share_intent;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -784,9 +800,11 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = ShareIntent/ShareIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 47QGMGVGKG;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareIntent/Info.plist;
@@ -801,7 +819,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.share-intent.ShareIntent";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ww8007.share.ShareIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -821,10 +839,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = ShareIntent/ShareIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 47QGMGVGKG;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareIntent/Info.plist;
@@ -838,7 +858,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.share-intent.ShareIntent";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ww8007.share.ShareIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;

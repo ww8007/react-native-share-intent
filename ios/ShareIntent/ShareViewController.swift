@@ -26,6 +26,13 @@ class ShareViewController: SLComposeServiceViewController {
           if let url = item as? URL {
             // 1. URL이 잘 공유 되었는지 확인
             print("Successfully retrieved URL item: \(url)")
+            // 2. app group에 공유
+            let sharedDefaults = UserDefaults(suiteName: "group.ww8007.share")
+            print("Before saving: \(sharedDefaults?.string(forKey: "sharedData") ?? "No Data")")
+            sharedDefaults?.set(url.absoluteString, forKey: "sharedData")
+            sharedDefaults?.synchronize()
+            print("After saving: \(sharedDefaults?.string(forKey: "sharedData") ?? "No Data")")
+
             // 2. 공유하기 동작을 종료
             DispatchQueue.main.async {
               let alert = UIAlertController(title: "알림", message: "공유가 완료 되었습니다.", preferredStyle: .alert)
@@ -34,6 +41,7 @@ class ShareViewController: SLComposeServiceViewController {
               }))
               self.present(alert, animated: true, completion: nil)
             }
+            
           } else {
             print("Error while retrieving URL item: \(error?.localizedDescription ?? "Unknown error")")
           }
