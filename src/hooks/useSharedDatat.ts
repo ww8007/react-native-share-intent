@@ -21,6 +21,20 @@ const useSharedData = () => {
     }
   }, [ShareModule]);
 
+  const checkSharedText = useCallback(() => {
+    if (CustomShareModule && CustomShareModule.getSharedText) {
+      CustomShareModule.getSharedText()
+        .then((sharedText: string) => {
+          Alert.alert('Shared Text', sharedText);
+          setSharedUrl(sharedText);
+        })
+        .catch((error: string) => {
+          console.log(error);
+          setSharedUrl('');
+        });
+    }
+  }, [CustomShareModule]);
+
   const handleAppStateChange = useCallback(
     (nextAppState: AppStateStatus) => {
       if (
@@ -29,11 +43,12 @@ const useSharedData = () => {
       ) {
         console.log('App has come to the foreground!');
         checkSharedData();
+        checkSharedText();
       }
       appState.current = nextAppState;
       setActiveAppState(appState.current);
     },
-    [checkSharedData],
+    [checkSharedData, checkSharedText],
   );
 
   useEffect(() => {
@@ -47,7 +62,7 @@ const useSharedData = () => {
     return () => {
       subscription.remove();
     };
-  }, [checkSharedData, handleAppStateChange]);
+  }, [checkSharedData, checkSharedText, handleAppStateChange]);
 
   const clearSharedText = () => {
     setSharedUrl('');
