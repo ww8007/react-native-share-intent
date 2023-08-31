@@ -24,6 +24,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import useSharedData from './src/hooks/useSharedDatat';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -31,6 +32,8 @@ type SectionProps = PropsWithChildren<{
 
 function Section({children, title}: SectionProps): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  useSharedData();
+
   return (
     <View style={styles.sectionContainer}>
       <Text
